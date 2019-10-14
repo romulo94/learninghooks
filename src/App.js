@@ -1,23 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
+
+import State from './useState';
+
+import Effect from './useEffect';
+import Callback from './useCallback';
+import Memo from './useMemo';
+import Context from './useContext';
+import Ref from './useRef';
+import LayoutEffect from './useLayoutEffect';
+import Reducer from './useReducer';
+
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <State />
+        {/* <Effect></Effect>
+     <Callback></Callback>
+     <Memo></Memo>
+     <Context></Context>
+     <Ref></Ref>
+     <LayoutEffect></LayoutEffect>
+     <Reducer></Reducer> */}
       </header>
     </div>
   );

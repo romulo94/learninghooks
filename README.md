@@ -1,68 +1,96 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Inicialmente a discussão baseava-se em: Stateful and Stateless Components**
 
-## Available Scripts
+"Desde a introdução de classes à sintaxe da linguagem JavaScript, o React
+incorporou os class components como sendo a sua principal forma de criar
+componentes com estado e ciclo de vida gerenciáveis. Essa abordagem, apesar de
+cumprir o propósito, possui algumas desvantagens, por exemplo, o funcionamento
+do `this` em classes JavaScript é pouco intuitivo; a restrição de acesso aos
+ciclos de vida de um componente exclusivamente por métodos especiais, como
+componentDidMount."
 
-In the project directory, you can run:
+- É difícil reutilizar a lógica estável entre componentes (HOCs e patterns).
+- Invólucros e mais e mais.
+- A verbosidade.
+- Use todas as features do React sem classes
+- Você pode experimentar o **hooks** sem reescrever nenhum código.
+- Compatível com versões anteriores.
+- Os **hooks** estão disponíveis a partir v16.8.0.
 
-### `yarn start`
+Com o **hooks**, você pode extrair a lógica com estado de um componente para que
+ele possa ser testado independentemente e reutilizado. Os **hooks** permitem
+reutilizar a lógica com estado sem alterar sua hierarquia de componentes. Isso
+facilita o compartilhamento de **hooks** entre muitos componentes ou com a
+comunidade.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Discutiremos isso mais em Construindo seus próprios **hooks**.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### Basic **hooks**
 
-### `yarn test`
+- useState
+- useEffect
+- useContext
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Additional **hooks**
 
-### `yarn build`
+- useReducer
+- useCallback
+- useMemo
+- useRef
+- useImperativeHandle\*
+- useLayoutEffect
+- useDebugValue\*
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## O useState:
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Retorna o estado e a função que atualiza o estado.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## O useEffect:
 
-### `yarn eject`
+Os ciclos de vida anteriores que usavamos com classes: componentDidMount,
+componentDidUpdate, componentWillUnmount.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## O useCallback:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Retorna uma função, quando criamos funções dentro dos componentes. Toda vez que
+o render é chamado a função seja criada uma única vez.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## O useMemo:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Criar uma variável que armazena um valor. Indicado para fazer cálculos mais
+complexos no componente, e são úteis para componentes sensíveis que tem muita
+renderização.
 
-## Learn More
+A principal diferença entre os dois é que 'useCallback' retorna um callback
+memorizado e 'useMemo' retorna um valor memorizado que é o resultado do
+parâmetro de função.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## O useContext:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Aceita um objeto de contexto e retorna o valor atual do contexto para esse
+contexto.
 
-### Code Splitting
+## O useRef:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+Retorna um objeto ref mutável cuja propriedade .current é inicializada no
+argumento passado (initialValue). O objeto retornado persistirá por toda a vida
+útil do componente.
 
-### Analyzing the Bundle Size
+## O useLayoutEffect:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+É "idêntico" ao useEffect, mas é acionada de forma síncrona após todas as
+mutações do DOM. Use isso para ler o layout do DOM e renderizar novamente de
+forma síncrona. As atualizações agendadas no useLayoutEffect serão liberadas de
+forma síncrona, antes que o browser possa pintar.
 
-### Making a Progressive Web App
+## O useReducer:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+Aceita um reducer do tipo `(state, action) => newState` e retorna o estado atual
+emparelhado com um método de `dispatch`.
 
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+[rocketseat](https://blog.rocketseat.com.br/react-**hooks**/)
+[reactjs](https://reactjs.org/docs)
+[devmedia](https://www.devmedia.com.br/react-hoje-e-amanha-o-que-muda-com-os-**hooks**/40314)
+[programmingwithmosh](https://programmingwithmosh.com/javascript/stateful-stateless-components-react/#targetText=Stateful%20and%20stateless%20components%20have%20many%20different%20names.&targetText=The%20literal%20difference%20is%20that,always%20render%20the%20same%20thing.)
+[dev](https://dev.to/devcord/react-**hooks**-useeffect-usecallback-usememo-3o42)
+[hackages](https://blog.hackages.io/react-**hooks**-usecallback-and-usememo-8d5bb2b67231)
+[overreacted](https://overreacted.io/a-complete-guide-to-useeffect/)
